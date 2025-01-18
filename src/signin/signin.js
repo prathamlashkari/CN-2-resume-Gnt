@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { toast } from 'react-toastify';
-import { auth } from '../config_db/firebase';
+// import { auth } from '../config_db/firebase';
 import { useNavigate } from 'react-router-dom';
 import { LoadingContext } from '../contexts/loadingContext';
 import { AuthContext } from '../contexts/authContext';
@@ -13,11 +13,11 @@ const Signin = () => {
   });
 
   const {loading,setLoading}=useContext(LoadingContext)
-  const {isAuthenticated, setIsAuthenticated} = useContext(AuthContext); // New state for authentication check
+  const {isAuthenticated, setIsAuthenticated} = useContext(AuthContext); 
 
   useEffect(() => {
    checkAuthentication();
-  }, []); // Empty dependency array means this useEffect runs once when the component mounts
+  }, []); 
 
 
 
@@ -50,7 +50,6 @@ const Signin = () => {
 
     const { email, password } = formData;
 
-    // Enhanced email regex
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     if (!emailRegex.test(email)) {
       toast.error("Invalid email format");
