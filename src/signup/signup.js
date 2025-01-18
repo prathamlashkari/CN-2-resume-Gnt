@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 import { auth } from '../config_db/firebase';
 import { useNavigate } from 'react-router-dom';
 import { doc, setDoc } from "firebase/firestore";
-import { db } from '../config_db/firebase';  // Assuming you've exported your Firestore instance as 'db'
+// import { db } from '../config_db/firebase';  
 import { LoadingContext } from '../contexts/loadingContext';
 
 
@@ -35,19 +35,16 @@ const Signup = () => {
     
     const { firstName, lastName, email, password, dob, gender } = formData;
   
-    // Validation for empty fields
     if (!firstName || !lastName || !email || !password || !dob || !gender) {
       toast.error("Complete all fields");
       return;
     }
 
-    // Password length validation
     if (password.length < 6) {
       toast.error("Password should be at least 6 characters");
       return;
     }
   
-    // Validate email format using a simple regex (this is basic and can be enhanced)
     const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
     if (!emailRegex.test(email)) {
       toast.error("Enter a valid email");
@@ -55,12 +52,10 @@ const Signup = () => {
     }
     
     try {
-      // Create the user with email and password
       setLoading(true);
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
     
-      // Update the user's profile (name in this case)
       await updateProfile(user, { displayName: `${firstName} ${lastName}` });
       
       const userDocRef = doc(db, "users", user.uid); // "users" is the collection name
@@ -68,13 +63,11 @@ const Signup = () => {
       setLoading(false);
       toast.success("User registered successfully");
 
-      // Navigate to the Sign-in page
       navigate("/signin");
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
           toast.error("Email is already in use");
       } else {
-          // Handle other errors (for brevity, we'll show a generic message here)
           toast.error("Error registering user");
       }
     }
