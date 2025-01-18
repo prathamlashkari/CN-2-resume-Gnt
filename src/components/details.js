@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { doc, getDoc, setDoc } from "firebase/firestore";
-import { db } from '../config_db/firebase';
+// import { db } from '../config_db/firebase';
 import { LoadingContext } from '../contexts/loadingContext';
 import { AuthContext } from '../contexts/authContext';
 import { toast } from 'react-toastify';
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { storage } from '../config_db/firebase'; // Assuming you have exported your Firebase storage instance as 'storage'
+// import { storage } from '../config_db/firebase'; 
 
 
 const Details = () => {

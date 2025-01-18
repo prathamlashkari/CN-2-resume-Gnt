@@ -7,7 +7,6 @@ const Resume = () => {
   const [resumeData, setResumeData] = useState({});
   const {loading,setLoading}=useContext(LoadingContext)
   useEffect(() => {
-    // Fetch user ID from local storage
     const yourpholioData = JSON.parse(localStorage.getItem('yourpholio'));
 
     if(yourpholioData && yourpholioData.uid){
@@ -19,7 +18,6 @@ const Resume = () => {
         const resumeDocSnap = await getDoc(resumeDocRef);
         const userDocSnap = await getDoc(userDocRef);
 
-        // Merge data from both documents
         const mergedData = {
           ...resumeDocSnap.data(),
           name: userDocSnap.data()?.displayName || "",
