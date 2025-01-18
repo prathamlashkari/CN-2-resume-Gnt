@@ -4,11 +4,11 @@ import { AuthContext } from '../contexts/authContext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const {isAuthenticated, setIsAuthenticated} = useContext(AuthContext); // New state for authentication check
+  const {isAuthenticated, setIsAuthenticated} = useContext(AuthContext); 
 
   useEffect(() => {
    checkAuthentication();
-  }, []); // Empty dependency array means this useEffect runs once when the component mounts
+  }, []); 
 
 
 
