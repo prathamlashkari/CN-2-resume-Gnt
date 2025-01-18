@@ -3,10 +3,8 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";  // <-- Importing storage
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
+
 const firebaseConfig = {
   apiKey: "AIzaSyAayY2DfnFZIXm3xrZr0GwK3NG0el128zA",
   authDomain: "resumemaker-63c6c.firebaseapp.com",
